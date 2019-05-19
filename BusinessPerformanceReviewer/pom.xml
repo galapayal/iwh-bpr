@@ -7,7 +7,6 @@
 	<name>Archetype - OpenSync</name>
 	<url>http://maven.apache.org</url>
 
-	<!-- <localRepository>D:/ZenSync repo</localRepository> -->
 
 
 	<repositories>
@@ -21,8 +20,6 @@
 			</snapshots>
 		</repository>
 
-		<!-- <repository> <id>localrepository</id> <url>file://${basedir}/repo</url> 
-			</repository> -->
 	</repositories>
 
 
@@ -55,8 +52,7 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> 
-			<version>1.7.3</version> </dependency> -->
+	
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -189,7 +185,6 @@
 			<version>${mongo.driver.version}</version>
 		</dependency>
 
-		<!-- Email Dependency by pg49467 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -197,7 +192,6 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- Apache Http Depenedency by pg49467 -->
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
