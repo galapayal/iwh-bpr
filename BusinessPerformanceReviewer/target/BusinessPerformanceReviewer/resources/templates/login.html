@@ -1,0 +1,55 @@
+<div class="container" data-ng-controller = "authenticationController">
+	<div class="d-flex justify-content-center h-100">
+	
+		
+				<div data-ng-show="regSuccessMsg != null">
+					<span>{{regSuccessMsg}}</span>
+				</div>
+				
+		<div class="card card-margin-top">
+		<img src="resources/images/bprLogo.png" class="loginImage center" >
+		<div data-ng-if="error">
+					<span style="color: red;     padding-left: 20%;"
+					>Invalid Username and Password.</span>
+				</div>
+			
+			<div class="card-body">
+				<form name="userForm" data-ng-submit="login()" novalidate>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" data-ng-model="username" name="username" id="username" placeholder="username" required>
+						
+						
+					</div>
+					<span style="color: red"
+							data-ng-show="userForm.username.$touched && userForm.username.$invalid">User
+							name is required.</span>
+							
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" data-ng-model="password" name="password" id="password" placeholder="password" required>
+						
+					</div>
+					<span style="color: red"
+							data-ng-show="userForm.password.$touched && userForm.password.$invalid">Password
+							 is required.</span>
+				
+					<div class="form-group">
+						<!-- <input type="submit" value="Login" data-ng-disabled="userForm.$invalid" class="btn float-right login_btn"> -->
+						<button type="submit" data-ng-disabled="userForm.$invalid" class="btn float-right login_btn">Login</button>
+					</div>
+				</form>
+			</div>
+			<div class="card-footer footer-color">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#register">Sign Up</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,393 @@
+<div data-ng-controller = "financeController">
+	<!-- Left Panel -->
+	<aside id="left-panel" class="left-panel">
+		<nav class="navbar navbar-expand-sm navbar-default navCustomheight">
+			<div id="main-menu" class="main-menu collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+
+					<li class="menu-title">Finance Analysis</li>
+					<!-- /.menu-title -->
+					<li><a href="#dataFinance"> <i
+							class="menu-icon fa fa-cogs"></i>Data Inputs
+					</a></li>
+					<li><a href="#financeAnalysis"> <i
+							class="menu-icon fa fa-table"></i>Statstics
+					</a></li>
+
+
+					<li class="menu-title">Competitor Analysis</li>
+					<!-- /.menu-title -->
+					<li><a href="#data1"> <i class="menu-icon fa fa-cogs"></i>Find
+							Competitors
+					</a></li>
+
+					<a href="#about"><li class="menu-title"
+						style="margin-left: 32px;">About Us</li></a>
+
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+	</aside>
+	<!-- /#left-panel -->
+	<!-- Right Panel -->
+	<div id="right-panel" class="right-panel">
+		<!-- Header-->
+		<header id="header" class="header panel-height">
+			<div class="top-left">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#dashboard"><img
+						src="resources/images/bprLogo.png" alt="Logo"></a>
+
+
+				</div>
+			</div>
+			<div class="top-right">
+				<div class="header-menu">
+
+
+					<div class="user-area dropdown float-right">
+						<a class="dropdown-toggle active" onclick="displayDropdown();"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img class="user-avatar rounded-circle"
+							src="resources/images/admin.jpg" alt="User Avatar">
+						</a>
+
+						<div id="dropMenu" class="user-menu dropdown-menu">
+							<a class="nav-link" data-ng-click="logout()" href><i
+								class="fa fa-power -off" ></i>Logout</a>
+						</div>
+					</div>
+					<script>
+						var flag = true;
+						var displayDropdown = function() {
+
+							if (flag) {
+								document.getElementById('dropMenu').style.display = "block";
+								flag = false;
+							} else {
+								document.getElementById('dropMenu').style.display = "none";
+								flag = true;
+							}
+
+						}
+					</script>
+
+				</div>
+			</div>
+		</header>
+		<!-- /#header -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+
+  <div class="alert alert-success" ng-show="sumiited">
+    <strong>Success!</strong> Balance Data Submitted Successfully
+  </div>
+                <div class="row">
+                    
+
+                 
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong style="font-size:20px;">BALANCE SHEET</strong><br/><br/>
+                                <div class="row form-group">
+                                	<div class="col col-md-4"><label for="text-input" class=" form-control-label">FOR THE YEAR OF</label></div>
+                                	<div class="col col-sm-3"><input type="number" ng-model="balYear" class="form-control" value="2019"  id="bal-year" name="bal-year" ></div>
+                                 </div>
+                                 <div class="row form-group">
+                                	<div class="col col-md-4"><label for="text-input" class=" form-control-label">CURRENCY</label></div>
+                                		<div class="col col-md-4">
+											<select class="form-control" ng-model="balCurrSel1" id="bal-curr-sel1" name="bal-curr-sel1">
+									        	<option>thousand</option>
+									        	<option>million</option>
+									       </select>
+									     </div>
+										<div class="col col-md-4">
+											<select class="form-control" ng-model="balCurrSel2" id="bal-curr-sel2" name="bal-curr-sel2">
+									        	<option>INR</option>
+									        	<option>USD</option>
+									       	    <option>EUR</option>
+									       </select>
+									     </div>
+								</div>
+                            </div>
+                            <div class="card-body card-block">
+                                <form name="balanceSheetForm" id="balanceSheetForm" data-ng-submit="submitBalaceSheet()" class="form-horizontal">
+                                     <div class="row form-group">
+                                        <div><label class=" form-control-label"><b style="font-size:20px;">EQUITY AND LIABILITIES</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>SHAREHOLDERS' FUNDS</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Share Capital</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="shareCapital" name="shareCapital"  class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Reserves and surplus</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="reserves"  name="reserves" class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>NON-CURRENT LIABILITIES</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Deferred tax liabilities (net)</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="dtln" name="dtln" class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Other long-term liabilities</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="oltl"  name="oltl" class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>CURRENT LIABILITIES</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Trade payables</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="tradepay" name="tradepay" class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Other current liabilities</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="currliab" name="currliab" class="form-control"></div>
+                                    </div> 
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Short-term provisions</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="stp" name="stp" class="form-control"></div>
+                                    </div>
+                                    <br/><br/>
+                                    
+                                     <div class="row form-group">
+                                        <div><label class=" form-control-label"><b style="font-size:20px;">ASSETS</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>NON-CURRENT ASSETS</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>Fixed assets</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tangible assets</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="tangAssets"  name="tangAssets" class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Intangible assets</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="intangAssets"   name="intangAssets" class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Capital work-in-progress</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="cwip"    name="cwip" class="form-control"></div>
+                                    </div> <br/>
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Non-current investments</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="nci"  name="nci" class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Deferred tax assets (net)</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="dtan"  name="dtan" class="form-control"></div>
+                                    </div> 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Long-term loans and advances</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="ltla"  name="ltla" class="form-control"></div>
+                                    </div> 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Other non-current assets</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="onca"  name="onca" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>CURRENT ASSETS</b></label></div>
+                                       
+                                    </div>
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Current investments</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="curr-inv" name="curr-inv" class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Trade receivables</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="trade-rec"  name="trade-rec" class="form-control"></div>
+                                    </div> 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cash and cash equivalents</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="cace"   name="cace" class="form-control"></div>
+                                    </div> 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Short-term loans and advances</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="stla"  name="stla" class="form-control"></div>
+                                    </div> <br/><br/>
+                                    
+                                    
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm" ng-click="resetForm('balanceSheetForm')">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                           
+                                    
+                                </form>
+                            </div>
+                             <div class="card-footer">
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong style="font-size:20px;">STATEMENT OF PROFIT AND LOSS</strong><br/><br/>
+                                <div class="row form-group">
+                                	<div class="col col-md-4"><label for="text-input" class=" form-control-label">FOR THE YEAR OF</label></div>
+                                	<div class="col col-sm-3"><input type="number" class="form-control" ng-model="pnlYear" value="2019" id="pnl-year" name="pnl-year"></div>
+                                 </div>
+                                 <div class="row form-group">
+                                	<div class="col col-md-4"><label for="text-input" class=" form-control-label">CURRENCY</label></div>
+                                		<div class="col col-md-4">
+										<select class="form-control" ng-model="pnlCurrSel1" id="pnl-curr-sel1" name="pnl-curr-sel1"  >
+									        <option>thousand</option>
+									        <option>million</option>
+									       
+									      </select>
+									      </div>
+										<div class="col col-md-4">
+										<select class="form-control" ng-model="pnlCurrSel2" id="pnl-curr-sel2" name="pnl-curr-sel2">
+									        <option>INR</option>
+									        <option>USD</option>
+									        <option>EUR</option>
+									        
+									      </select>
+									      </div>
+								</div>
+                            </div>
+                            <div class="card-body card-block">
+                                <form name="PNLSheetForm" id="PNLSheetForm" data-ng-submit="submitPNLSheet()">
+                                    
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Income from software services and products</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="ifssp"  name="ifssp"  class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Other income</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="otherIncome" name="otherIncome"   class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>EXPENSES</b></label></div>
+                                       
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Employee benefit expenses</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="empBE" name="empBE"  class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Deferred consideration pertaining to acquisition</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="dcpta" name="dcpta"   class="form-control"></div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost of technical sub-contractors</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="ctsc" name="ctsc"  class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Travel expenses</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="travExp" name="travExp"   class="form-control"></div>
+                                    </div> 
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost of software packages and others</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="cspo" name="cspo"  class="form-control"></div>
+                                    </div>
+                                   
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Communication expenses</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="commExp" name="commExp"  class="form-control"></div>
+                                    </div>
+                                    
+                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Professional charges</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="profCharge" name="profCharge" class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Depreciation and amortisation expense</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="daae" name="daae"  class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Other expenses</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"   id="otrExp" name="otrExp"  class="form-control"></div>
+                                    </div> 
+                                    
+                                    
+                                    <div class="row form-group">
+                                        <div><label class=" form-control-label"><b>TAX EXPENSE</b></label></div>
+                                       
+                                    </div>
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Current tax</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="currTax" name="currTax"  class="form-control"></div>
+                                    </div> 
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Deferred tax</label></div>
+                                        <div class="col-12 col-md-9"><input type="number"  id="defTax" name="defTax"  class="form-control"></div>
+                                    </div> 
+                                    
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm" ng-click="resetForm('PNLSheetForm')">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
+                                    
+                                    
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    
+
+            </div>
+
+
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    
+        <div class="clearfix"></div>
+      
+    </div>
+    <!-- /#right-panel -->
+</div>
+   
